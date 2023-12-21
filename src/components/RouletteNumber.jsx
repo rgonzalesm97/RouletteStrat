@@ -1,4 +1,5 @@
 
+// eslint-disable-next-line react/prop-types
 const RouletteNumber = ({index, number, color, isActual, isPossible, onClick}) => {
     
     const alfa = (2*Math.PI)/37
@@ -9,6 +10,14 @@ const RouletteNumber = ({index, number, color, isActual, isPossible, onClick}) =
         onClick(number)
     }
 
+    const generateShadow = () => {
+        if(!isActual && !isPossible) return "0px 0px 0px 0px"
+        const color = isActual?"yellow":"blue"
+        const x = Math.sin(alfa*index)*-7
+        const y = Math.cos(alfa*index)*7
+        return `${x}px ${y}px 0px 0px ${color}`
+    }
+
     return (
         <div 
             className={className} 
@@ -17,6 +26,7 @@ const RouletteNumber = ({index, number, color, isActual, isPossible, onClick}) =
                 left: `${190+(Math.sin(index*alfa)*190*0.94)-15}px`,
                 backgroundColor: `${color}`,
                 color: "white",
+                boxShadow: `${generateShadow()}`
             }}
             onClick={handleNextNumber}
         >

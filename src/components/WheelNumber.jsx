@@ -1,4 +1,6 @@
+/* eslint-disable react/prop-types */
 
+// eslint-disable-next-line react/prop-types, no-unused-vars
 const WheelNumber = ({value, selected, getWheelSelection, handleWheelSelection, number=0,}) => {
     const colors = {
         0: "white",
@@ -24,6 +26,13 @@ const WheelNumber = ({value, selected, getWheelSelection, handleWheelSelection, 
         getWheelSelection.handleWheelSelection(numbers)
     }
 
+    const generateShadow = () => {
+        if(!selected) return "0px 0px 0px 0px"
+        const x = Math.sin(alfa*value)*-7
+        const y = Math.cos(alfa*value)*7
+        return `${x}px ${y}px 0px 0px purple`
+    }
+
     let className = `wheel-number ${selected?"selected":""}`
 
     return (
@@ -32,7 +41,8 @@ const WheelNumber = ({value, selected, getWheelSelection, handleWheelSelection, 
             style={{
                 top: `${190-(Math.cos(value*alfa)*190*0.94)-15}px`,
                 left: `${190+(Math.sin(value*alfa)*190*0.94)-15}px`,
-                backgroundColor: `${colors[number]??"red"}`
+                backgroundColor: `${colors[number]??"red"}`,
+                boxShadow: `${generateShadow()}`
             }}
             onClick={handleClick}
         >
