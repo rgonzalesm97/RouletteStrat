@@ -1,4 +1,3 @@
-import { useState } from "react"
 
 const WheelNumber = ({value, selected, getWheelSelection, handleWheelSelection, number=0,}) => {
     const colors = {

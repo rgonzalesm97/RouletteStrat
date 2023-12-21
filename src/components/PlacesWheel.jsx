@@ -1,9 +1,8 @@
-import { useState } from 'react'
 import { populatePlacesWheel } from '../util/util'
 import WheelNumber from './WheelNumber';
 
 const PlacesWheel = (getWheelSelection, handleWheelSelection) => {
-    const [data, setData] = useState(populatePlacesWheel())
+    const data = populatePlacesWheel()
 
     return (
         <div className="wheel-container">

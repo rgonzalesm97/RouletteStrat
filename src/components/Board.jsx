@@ -4,18 +4,19 @@ import Roulette from "./Roulette"
 
 const Board = () => {
     const [numberWheelSelection, setNumberWheelSelection] = useState([])
+    
 
     const handleWheelSelection = (numbers) => {
         setNumberWheelSelection(numbers)
     }
 
-    const getWheelSelection = (index) => {
+    const getWheelSelection = () => {
         return [...numberWheelSelection]
     }
     
     return (
         <section className="board-container">
-            <Roulette/>
+            <Roulette numberWheelSelection={numberWheelSelection} getWheelSelection={getWheelSelection}/>
             <PlacesWheel getWheelSelection={getWheelSelection} handleWheelSelection={handleWheelSelection}/>
         </section>
     )
