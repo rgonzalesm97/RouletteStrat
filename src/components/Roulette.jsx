@@ -17,14 +17,15 @@ const Roulette = (numberWheelSelection) => {
         setNextNumber(number)
     }
 
-    const handleCentralNumber = (number) => {
-        setCentralNumber(number)
+    const handleCentralNumber = () => {
+        setCentralNumber(nextNumber)
         setNextNumber(null)
     }
 
     useEffect(() => {
         const wheelSelection = [...numberWheelSelection.getWheelSelection()]
         setPossibleNumbers(rouletteStructure.extrac_possibles(centralNumber, wheelSelection))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [numberWheelSelection, nextNumber])
 
     return (
@@ -44,7 +45,7 @@ const Roulette = (numberWheelSelection) => {
             }
             <div className="central-number">{centralNumber}</div>
             <div className="next">
-                <button onClick={() => handleCentralNumber(nextNumber)} disabled={nextNumber==null}>ASSIGN NEXT</button>
+                <button onClick={handleCentralNumber} disabled={nextNumber==null}>ASSIGN NEXT</button>
                 <div className="next-number">{nextNumber}</div>
             </div>
             
