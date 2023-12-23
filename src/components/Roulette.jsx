@@ -12,9 +12,7 @@ const Roulette = (numberWheelSelection) => {
     const [nextNumber, setNextNumber] = useState(null)
 
     let rouletteStructure = new RouletteStructure()
-    for(let e of roulette){
-        rouletteStructure.agregar_numero(e.number)
-    }
+    rouletteStructure.create_european_roullete_structure()
 
     const handleNumberClick = (number) => {
         setNextNumber(number)

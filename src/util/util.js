@@ -1,7 +1,7 @@
 export function populatePlacesWheel() {
     var data = []
     for (let i = 1; i < 38; i++) {
-        data.push({ value: i })
+        data.push({ value: i, times: 0 })
     }
     return data
 }
@@ -45,3 +45,17 @@ export const roulette = [
     { number: 3, color: "red" },
     { number: 26, color: "black" },
 ]
+
+export const wheelColors = {
+    0: "white",
+    1: "#C2EDED",
+    2: "#00E3EF",
+    3: "#B9FFB9",
+    4: "#11FF00",
+    5: "#FFFAA7",
+    6: "#FFE601",
+    7: "#FFC891",
+    8: "#FF8000",
+    9: "#FF8B87",
+    10: "red"
+}

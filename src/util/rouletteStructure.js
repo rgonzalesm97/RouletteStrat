@@ -1,3 +1,5 @@
+import { roulette } from "./util";
+
 class Nodo {
     constructor(nombre) {
         this.nombre = nombre;
@@ -58,6 +60,13 @@ export class RouletteStructure {
             nodoActual = nodoActual.siguiente
             count++
         }
+        if (count === 0) count = 37
         return count
+    }
+
+    create_european_roullete_structure() {
+        for (let e of roulette) {
+            this.agregar_numero(e.number)
+        }
     }
 }

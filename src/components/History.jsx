@@ -3,7 +3,7 @@ import { NumberHistoryContext } from "./Board"
 import { useNumberColor } from "../hooks/useNumberColor"
 
 const History = () => {
-    const [numbersHistory, setNumbersHistory] = useContext(NumberHistoryContext)
+    const [numbersHistory] = useContext(NumberHistoryContext)
 
     return (
         <div className="history-container">
