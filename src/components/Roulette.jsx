@@ -1,9 +1,12 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { roulette } from '../util/util'
 import { RouletteStructure } from '../util/rouletteStructure'
 import RouletteNumber from "./RouletteNumber"
+import { NumberHistoryContext } from "./Board"
 
 const Roulette = (numberWheelSelection) => {
+    const [numbersHistory, setNumbersHistory] = useContext(NumberHistoryContext)
+
     const [centralNumber, setCentralNumber] = useState(0)
     const [possibleNumbers, setPossibleNumbers] = useState([])
     const [nextNumber, setNextNumber] = useState(null)
@@ -20,6 +23,10 @@ const Roulette = (numberWheelSelection) => {
     const handleCentralNumber = () => {
         setCentralNumber(nextNumber)
         setNextNumber(null)
+
+        let numbers = [...numbersHistory]
+        numbers.push(nextNumber)
+        setNumbersHistory(numbers)
     }
 
     useEffect(() => {

@@ -1,10 +1,13 @@
-import { useState } from "react"
+import { createContext, useState } from "react"
 import PlacesWheel from "./PlacesWheel"
 import Roulette from "./Roulette"
+import History from "./History"
+
+export const NumberHistoryContext = createContext()
 
 const Board = () => {
     const [numberWheelSelection, setNumberWheelSelection] = useState([])
-    
+    const [numbersHistory, setNumbersHistory] = useState([])
 
     const handleWheelSelection = (numbers) => {
         setNumberWheelSelection(numbers)
@@ -15,10 +18,13 @@ const Board = () => {
     }
     
     return (
-        <section className="board-container">
-            <Roulette numberWheelSelection={numberWheelSelection} getWheelSelection={getWheelSelection}/>
-            <PlacesWheel getWheelSelection={getWheelSelection} handleWheelSelection={handleWheelSelection}/>
-        </section>
+        <NumberHistoryContext.Provider value={[numbersHistory, setNumbersHistory]}>
+            <section className="board-container">
+                <Roulette numberWheelSelection={numberWheelSelection} getWheelSelection={getWheelSelection} />
+                <PlacesWheel getWheelSelection={getWheelSelection} handleWheelSelection={handleWheelSelection}/>
+                <History />
+            </section>
+        </NumberHistoryContext.Provider>
     )
 }
 
